@@ -4,7 +4,7 @@ pipeline{
       stages {
             stage("Clone Repository"){
                 steps{
-                  git branch 'main',
+                  git branch: 'main',
                        url :'https://github.com/anuj5926/URL_Shortener_Microservice.git'
                 }
             }
