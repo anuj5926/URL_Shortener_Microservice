@@ -1,7 +1,7 @@
 pipeline{
       agent any
       tools {nodejs "Node"}
-      stages {
+      stage {
             stage("Clone Repository"){
                 steps{
                   git branch: 'main',
@@ -9,13 +9,13 @@ pipeline{
                 }
             }
       }
-      stages('Install Dependencies'){
+      stage('Install Dependencies'){
         steps{
           bat 'npm install'
         }
       }
   
-      stages('Deploy'){
+      stage('Deploy'){
         steps{
           bat 'pm2 start index.js'
         }
