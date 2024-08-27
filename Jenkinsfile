@@ -1,14 +1,13 @@
 pipeline{
       agent any
       tools {nodejs "Node"}
-      stage {
+      stages {
             stage("Clone Repository"){
                 steps{
                   git branch: 'main',
                        url :'https://github.com/anuj5926/URL_Shortener_Microservice.git'
                 }
             }
-      }
       stage('Install Dependencies'){
         steps{
           bat 'npm install'
@@ -19,6 +18,7 @@ pipeline{
         steps{
           bat 'pm2 start index.js'
         }
+      }
       }
 }
      
