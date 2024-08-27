@@ -20,4 +20,5 @@ pipeline{
           bat 'pm2 start index.js'
         }
       }
+}
      
