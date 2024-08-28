@@ -1,23 +1,43 @@
-pipeline{
-      agent any
-      stages {
-            stage("Clone Repository"){
-                steps{
-                  git branch: 'main',
-                       url :'https://github.com/anuj5926/URL_Shortener_Microservice.git'
+pipeline {
+    agent any 
+
+    environment {
+        REPO_URL = 'https://github.com/anuj5926/URL_Shortener_Microservice.git' // Replace with your repository URL
+        REPO_DIR = '/home/ubuntu/' // The directory where the repo will be cloned
+    }
+
+    stages {
+        stage('Clone or Update Repository') { 
+            steps {
+                script {
+                    // Check if the repository directory exists
+                    if (fileExists(REPO_DIR)) {
+                        dir(REPO_DIR) {
+                            // If it exists, pull the latest changes
+                            sh 'git pull'
+                        }
+                    } else {
+                        // If it doesn't exist, clone the repository
+                        sh "git clone ${REPO_URL} ${REPO_DIR}"
+                    }
                 }
             }
-      stage('Install Dependencies'){
-        steps{
-          bat 'npm install'
         }
-      }
-  
-      stage('Deploy'){
-        steps{
-          bat 'pm2 start index.js'
+        stage('Build') { 
+            steps {
+                dir(REPO_DIR) {
+                    // Add your build commands here
+                    sh 'npm intsall' // Example build script
+                }
+            }
         }
-      }
-      }
+        stage('Deploy') { 
+            steps {
+                dir(REPO_DIR) {
+                    // Add your deploy commands here
+                    sh 'pm2 start ./index.js' // Example deploy script
+                }
+            }
+        }
+    }
 }
-     
