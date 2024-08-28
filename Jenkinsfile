@@ -14,7 +14,7 @@ pipeline {
                     if (fileExists(REPO_DIR)) {
                         dir(REPO_DIR) {
                             // If it exists, pull the latest changes
-                            sh 'git pull'
+                            sh 'git pull origin main'
                         }
                     } else {
                         // If it doesn't exist, clone the repository
