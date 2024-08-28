@@ -20,7 +20,7 @@ pipeline {
                     //     // If it doesn't exist, clone the repository
                     //     sh "git clone ${REPO_URL} ${REPO_DIR}"
                     // }
-                    sh 'cp -ir /var/lib/jenkins/workspace/Dns /home/'
+                    sh 'cp -ir /var/lib/jenkins/workspace/Dns /opt/'
                 }
             }
         }
