@@ -10,16 +10,6 @@ pipeline {
         stage('Clone or Update Repository') { 
             steps {
                 script {
-                    // Check if the repository directory exists
-                    // if (fileExists(REPO_DIR)) {
-                    //     dir(REPO_DIR) {
-                    //         // If it exists, pull the latest changes
-                    //         sh 'git pull origin main'
-                    //     }
-                    // } else {
-                    //     // If it doesn't exist, clone the repository
-                    //     sh "git clone ${REPO_URL} ${REPO_DIR}"
-                    // }
                     sh 'cp -ir /var/lib/jenkins/workspace/Dns /jenkinsData/'
                 }
             }
