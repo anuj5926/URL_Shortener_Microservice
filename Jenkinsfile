@@ -24,21 +24,5 @@ pipeline {
                 }
             }
         }
-        // stage('Build') { 
-        //     steps {
-        //         dir(REPO_DIR) {
-        //             // Add your build commands here
-        //             sh 'npm intsall' // Example build script
-        //         }
-        //     }
-        // }
-        // stage('Deploy') { 
-        //     steps {
-        //         dir(REPO_DIR) {
-        //             // Add your deploy commands here
-        //             sh 'pm2 start ./index.js' // Example deploy script
-        //         }
-        //     }
-        // }
     }
 }
